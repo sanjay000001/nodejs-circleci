@@ -24,6 +24,9 @@ workflows:
   build_test_new:
     jobs:
       - run_tests
+  build_test_latest:
+    jobs:
+      - run_tests
       # - build_docker_image
       # - gke_create_cluster
       # - gke_deploy_app:
