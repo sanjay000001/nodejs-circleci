@@ -7,6 +7,7 @@ function welcomeMessage(){
     console.log("Test");
     console.log("Test");
     console.log("New Test");
+    console.log("Demo Test");
     return message;
 }
 
