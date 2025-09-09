@@ -38,6 +38,7 @@ workflows:
   build_test:
     jobs:
       - run_tests_new
+      - run_tests
   build_test_new:
     jobs:
       - run_tests
