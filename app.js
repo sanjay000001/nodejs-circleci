@@ -6,6 +6,7 @@ function welcomeMessage(){
     var message = "Welcome to CI/CD 101 using CircleCI!";
     console.log("Test");
     console.log("Test");
+    console.log("New Test");
     return message;
 }
 
