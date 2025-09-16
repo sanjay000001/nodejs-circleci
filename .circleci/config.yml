@@ -18,7 +18,7 @@ jobs:
       - store_artifacts:
           path: test-results
 workflows:
-  build_test:
+  build_test-samplme/name.abc*def\ikl|asas-er:
     jobs:
       - run_tests
   build_test_new:
