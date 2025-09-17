@@ -15,8 +15,6 @@ jobs:
             ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
       - store_test_results:
           path: test-results
-      - store_artifacts:
-          path: test-results
 workflows:
   build_test-samplme:
     jobs:
