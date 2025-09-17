@@ -13,10 +13,18 @@ jobs:
           name: Run Unit Tests (JUnit XML)
           command: |
             npm test
-      - store_test_results:
-          path: reports/junit
+      - run:
+          name: Package JUnit report into zip
+          command: |
+            sudo apt-get update -y && sudo apt-get install -y zip
+            mkdir -p artifacts
+            zip -j artifacts/junit-report.zip reports/junit/*.xml
+      # - store_test_results:
+      #     path: reports/junit
+      # - store_artifacts:
+      #     path: reports/junit
       - store_artifacts:
-          path: reports/junit
+          path: artifacts/junit-report.zip
 workflows:
   build_test-samplme:
     jobs:
