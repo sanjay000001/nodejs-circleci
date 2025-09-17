@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "mocha"
+    "test": "mkdir -p reports/junit && MOCHA_FILE=reports/junit/results.xml mocha --reporter mocha-junit-reporter",
+    "test:spec": "mocha"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
     "mocha": "^5.2.0",
     "mochawesome": "^4.1.0",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "mocha-junit-reporter": "^2.0.2"
   }
 }

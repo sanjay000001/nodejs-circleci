@@ -10,11 +10,13 @@ jobs:
           command: |
             npm install --save
       - run:
-          name: Run Unit Tests
+          name: Run Unit Tests (JUnit XML)
           command: |
-            ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportFilename=test-results
+            npm test
       - store_test_results:
-          path: test-results
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
 workflows:
   build_test-samplme:
     jobs:
