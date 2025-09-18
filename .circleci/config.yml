@@ -21,8 +21,8 @@ jobs:
           #   zip -j artifacts/junit-report.zip reports/junit/*.xml
       # - store_test_results:
       #     path: reports/junit
-      - store_artifacts:
-          path: reports/junit
+        - store_artifacts:
+            path: reports/junit
       # - store_artifacts:
       #     path: artifacts/junit-report.zip
 workflows:
