@@ -13,44 +13,19 @@ jobs:
           name: Run Unit Tests (JUnit XML)
           command: |
             npm test
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
       - run:
-          # name: Package JUnit report into zip
-          # command: |
-          #   sudo apt-get update -y && sudo apt-get install -y zip
-          #   mkdir -p artifacts
-          #   zip -j artifacts/junit-report.zip reports/junit/*.xml
-      # - store_test_results:
-      #     path: reports/junit
-        - store_artifacts:
-            path: reports/junit
-      # - store_artifacts:
-      #     path: artifacts/junit-report.zip
+          name: Package JUnit report zip
+          command: |
+            mkdir -p artifacts
+            command -v zip >/dev/null || (sudo apt-get update -y && sudo apt-get install -y zip)
+            zip -j artifacts/junit-report.zip reports/junit/*.xml
+      - store_artifacts:
+          path: artifacts/junit-report.zip
 workflows:
-  # build_test-samplme:
-  #   jobs:
-  #     - run_tests
-  # build_test_new:
-  #   jobs:
-  #     - run_tests
   sanjay-test-workflow:
     jobs:
       - run_tests
-      # - build_docker_image
-      # - gke_create_cluster
-      # - gke_deploy_app:
-      #     requires:
-      #       - run_tests
-      #       - build_docker_image
-      #       - gke_create_cluster
-      # - smoketest_gke_deployment:
-      #     requires:
-      #       - gke_deploy_app
-      # - approve-destroy:
-      #     type: approval
-      #     requires:
-      #       - gke_create_cluster
-      #       - gke_deploy_app
-      #       - smoketest_gke_deployment
-      # - gke_destroy_cluster:
-      #     requires:
-      #       - approve-destroy

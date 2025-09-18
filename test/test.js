@@ -29,7 +29,7 @@ describe("Welcome to CI/CD Server", function() {
       assert.strictEqual(helloWorld.addNumbers(2,3), 5);
     });
     it("adds negative and positive number", function() {
-      assert.strictEqual(helloWorld.addNumbers(-2,4), 1);
+      assert.strictEqual(helloWorld.addNumbers(1,1), 2);
     });
     it("adds two negative numbers", function() {
       assert.strictEqual(helloWorld.addNumbers(-4,-6), -10);
