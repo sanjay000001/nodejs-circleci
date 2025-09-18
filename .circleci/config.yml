@@ -14,17 +14,17 @@ jobs:
           command: |
             npm test
       - run:
-          name: Package JUnit report into zip
-          command: |
-            sudo apt-get update -y && sudo apt-get install -y zip
-            mkdir -p artifacts
-            zip -j artifacts/junit-report.zip reports/junit/*.xml
+          # name: Package JUnit report into zip
+          # command: |
+          #   sudo apt-get update -y && sudo apt-get install -y zip
+          #   mkdir -p artifacts
+          #   zip -j artifacts/junit-report.zip reports/junit/*.xml
       # - store_test_results:
       #     path: reports/junit
-      # - store_artifacts:
-      #     path: reports/junit
       - store_artifacts:
-          path: artifacts/junit-report.zip
+          path: reports/junit
+      # - store_artifacts:
+      #     path: artifacts/junit-report.zip
 workflows:
   # build_test-samplme:
   #   jobs:
