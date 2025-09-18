@@ -9,6 +9,14 @@ function welcomeMessage(){
     return message;
 }
 
+// New addition function
+function addNumbers(a, b){
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new Error('Arguments must be numbers');
+    }
+    return a + b;
+}
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -23,3 +31,4 @@ var server = app.listen(5000, function () {
 
 module.exports = server;
 module.exports.welcomeMessage = welcomeMessage;
+module.exports.addNumbers = addNumbers;

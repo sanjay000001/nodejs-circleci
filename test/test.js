@@ -22,4 +22,23 @@ describe("Welcome to CI/CD Server", function() {
       assert.equal(res, message);
     });  
   });
+
+  // Tests for addNumbers
+  describe("addNumbers", function() {
+    it("adds two positive numbers", function() {
+      assert.strictEqual(helloWorld.addNumbers(2,3), 5);
+    });
+    it("adds negative and positive number", function() {
+      assert.strictEqual(helloWorld.addNumbers(-2,4), 1);
+    });
+    it("adds two negative numbers", function() {
+      assert.strictEqual(helloWorld.addNumbers(-4,-6), -10);
+    });
+    it("adds floating point numbers", function() {
+      assert.strictEqual(helloWorld.addNumbers(1.5,2.3), 3.8);
+    });
+    it("throws error when non-numeric arguments", function() {
+      assert.throws(() => helloWorld.addNumbers(1,'a'), /Arguments must be numbers/);
+    });
+  });
 });

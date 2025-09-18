@@ -26,12 +26,12 @@ jobs:
       - store_artifacts:
           path: artifacts/junit-report.zip
 workflows:
-  build_test-samplme:
-    jobs:
-      - run_tests
-  build_test_new:
-    jobs:
-      - run_tests
+  # build_test-samplme:
+  #   jobs:
+  #     - run_tests
+  # build_test_new:
+  #   jobs:
+  #     - run_tests
   sanjay-test-workflow:
     jobs:
       - run_tests
