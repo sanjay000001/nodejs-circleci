@@ -7,7 +7,7 @@ describe("Add Numbers API", function() {
 
   describe("GET /add", function() {
     it("returns 200 and correct sum for integers", function(done) {
-      request.get(base_url + '/add?a=2&b=3', function(error, response, body) {
+      request.get(base_url + '/add?a=1&b=3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
@@ -17,7 +17,7 @@ describe("Add Numbers API", function() {
     });
 
     it("returns 200 and correct sum for floats", function(done) {
-      request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
+      request.get(base_url + '/add?a=1&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
