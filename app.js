@@ -2,27 +2,25 @@ var express = require('express');
 var app = express();
 var exports = module.exports = {};
 
-function welcomeMessage(){
-    var message = "Welcome to CI/CD 101 using CircleCI!";
-    console.log("Test");
-    console.log("Test");
-    return message;
-}
-
-// New addition function
+// Removed welcomeMessage; now focusing solely on addNumbers API
 function addNumbers(a, b){
-    if (typeof a !== 'number' || typeof b !== 'number') {
+    if (typeof a !== 'number' || typeof b !== 'number' || Number.isNaN(a) || Number.isNaN(b)) {
         throw new Error('Arguments must be numbers');
     }
     return a + b;
 }
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
+// Remove view engine & EJS usage since we now return JSON only
+// app.set('view engine', 'ejs');
 
-app.get('/', function (req, res) {
-    // var message = "Hello World";
-    res.render("index", {message: welcomeMessage()});
+// Arithmetic endpoint: /add?a=1&b=2 -> {a:1,b:2,result:3}
+app.get('/add', function (req, res) {
+    const a = parseFloat(req.query.a);
+    const b = parseFloat(req.query.b);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+        return res.status(400).json({error: 'Query params a and b must be numbers'});
+    }
+    return res.json({ a, b, result: addNumbers(a, b) });
 });
 
 var server = app.listen(5000, function () {
@@ -30,5 +28,4 @@ var server = app.listen(5000, function () {
 });
 
 module.exports = server;
-module.exports.welcomeMessage = welcomeMessage;
 module.exports.addNumbers = addNumbers;
