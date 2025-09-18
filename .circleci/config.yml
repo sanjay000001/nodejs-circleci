@@ -9,16 +9,34 @@ jobs:
           name: Install npm dependencies
           command: npm ci
       - run:
-          name: Run Unit Tests (JUnit XML)
-          command: npm test
+          name: Run Unit Tests (capture exit, do not fail yet)
+          command: |
+            set +e
+            npm test
+            TEST_EXIT=$?
+            echo "Test exit code: $TEST_EXIT"
+            echo $TEST_EXIT > test-exit-code.txt
+            # Ensure junit xml exists even if tests aborted early
+            if [ ! -d reports/junit ]; then mkdir -p reports/junit; fi
       - run:
           name: Package JUnit report zip
           command: |
             mkdir -p artifacts
             command -v zip >/dev/null || (sudo apt-get update -y && sudo apt-get install -y zip)
-            zip -j artifacts/junit-report.zip reports/junit/*.xml
+            if ls reports/junit/*.xml 1> /dev/null 2>&1; then
+              zip -j artifacts/junit-report.zip reports/junit/*.xml
+            else
+              echo "No JUnit XML files found to zip." > artifacts/NOTICE.txt
+              zip -j artifacts/junit-report.zip artifacts/NOTICE.txt
+            fi
       - store_artifacts:
           path: artifacts/junit-report.zip
+      - run:
+          name: Fail job if tests failed
+          command: |
+            EXIT_CODE=$(cat test-exit-code.txt)
+            echo "Exiting with original test exit code: $EXIT_CODE"
+            exit $EXIT_CODE
 workflows:
   sanjay-test-workflow:
     jobs:
