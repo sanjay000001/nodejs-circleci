@@ -7,16 +7,10 @@ jobs:
       - checkout
       - run:
           name: Install npm dependencies
-          command: |
-            npm ci
+          command: npm ci
       - run:
           name: Run Unit Tests (JUnit XML)
-          command: |
-            npm test
-      - store_test_results:
-          path: reports/junit
-      - store_artifacts:
-          path: reports/junit
+          command: npm test
       - run:
           name: Package JUnit report zip
           command: |
