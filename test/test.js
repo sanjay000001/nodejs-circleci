@@ -11,7 +11,7 @@ describe("Add Numbers API", function() {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
-        assert.strictEqual(json.result, 5);
+        assert.strictEqual(json.result, 100);
         done();
       });
     });
@@ -21,7 +21,7 @@ describe("Add Numbers API", function() {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
-        assert.strictEqual(json.result, 3.8);
+        assert.strictEqual(json.result, 4.8);
         done();
       });
     });
