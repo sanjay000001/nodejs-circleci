@@ -16,7 +16,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 2yuio00 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
@@ -26,7 +26,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 20fds0 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
@@ -36,7 +36,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 2asasas00 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
@@ -46,7 +46,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 20vbn0 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
@@ -56,7 +56,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 2ooo00 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=1.5&b=2.3', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
@@ -66,7 +66,7 @@ describe("Add Numbers API", function() {
       });
     });
 
-    it("returns 200 and correct sum for floats", function(done) {
+    it("returns 20llll0 and correct sum for floats", function(done) {
       request.get(base_url + '/add?a=100&b=0', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
