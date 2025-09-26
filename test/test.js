@@ -27,11 +27,11 @@ describe("Add Numbers API", function() {
     });
 
     it("returns 200 and correct sum for floats", function(done) {
-      request.get(base_url + '/add?a=500&b=200', function(error, response, body) {
+      request.get(base_url + '/add?a=100&b=200', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
-        assert.strictEqual(json.result, 700);
+        assert.strictEqual(json.result, 300);
         done();
       });
     });
