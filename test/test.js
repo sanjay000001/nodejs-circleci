@@ -26,24 +26,22 @@ describe("Calculator API Tests", function() {
       });
     });
 
-    it("should fail when expecting wrong sum for negative numbers", function(done) {
+    it("should correctly add negative numbers", function(done) {
       request.get(base_url + '/add?a=-10&b=-5', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
-        // This will fail - expecting wrong result
-        assert.strictEqual(json.result, -10); // Should be -15
+        assert.strictEqual(json.result, -15);
         done();
       });
     });
 
-    it("should fail when expecting incorrect zero handling", function(done) {
+    it("should correctly handle zero addition", function(done) {
       request.get(base_url + '/add?a=0&b=0', function(error, response, body) {
         assert.ifError(error);
         assert.equal(200, response.statusCode);
         const json = JSON.parse(body);
-        // This will fail - expecting wrong result
-        assert.strictEqual(json.result, 1); // Should be 0
+        assert.strictEqual(json.result, 0);
         done();
       });
     });
@@ -78,11 +76,12 @@ describe("Calculator API Tests", function() {
       });
     });
 
-    it("should fail expecting wrong status code for valid request", function(done) {
+    it("should return correct status code for valid request", function(done) {
       request.get(base_url + '/add?a=1&b=1', function(error, response, body) {
         assert.ifError(error);
-        // This will fail - expecting wrong status
-        assert.equal(404, response.statusCode); // Should be 200
+        assert.equal(200, response.statusCode);
+        const json = JSON.parse(body);
+        assert.strictEqual(json.result, 2);
         done();
       });
     });
@@ -93,9 +92,8 @@ describe("Calculator API Tests", function() {
       assert.strictEqual(appServer.addNumbers(-3, 8), 5);
     });
     
-    it("should fail when expecting wrong result for double negatives", function() {
-      // This will fail - expecting wrong result
-      assert.strictEqual(appServer.addNumbers(-2, -3), 5); // Should be -5
+    it("should correctly add two negative numbers", function() {
+      assert.strictEqual(appServer.addNumbers(-2, -3), -5);
     });
     
     it("should properly throw error for invalid string input", function() {
