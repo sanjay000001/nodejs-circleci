@@ -38,6 +38,6 @@ jobs:
             echo "Exiting with original test exit code: $EXIT_CODE"
             exit $EXIT_CODE
 workflows:
-  demo-workflow:
+  QEI-demo-workflow:
     jobs:
       - run_tests
