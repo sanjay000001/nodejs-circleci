@@ -38,6 +38,6 @@ jobs:
             echo "Exiting with original test exit code: $EXIT_CODE"
             exit $EXIT_CODE
 workflows:
-  sanjay-test-workflow:
+  demo-workflow:
     jobs:
       - run_tests
